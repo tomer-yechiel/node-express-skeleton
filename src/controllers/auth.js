@@ -1,7 +1,27 @@
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
-import config from 'config';
+// import config from 'config';
 import response from '../helpers/response';
+
+const config = {
+  server: {
+    port: 9000
+  },
+  database: {
+    url: `mongodb://localhost/node-express-skeleton-dev`,
+    properties: {
+      useMongoClient: true
+    }
+  },
+  key: {
+    privateKey: '37LvDSm4XvjYOh9Y',
+    tokenExpireInMinutes: 1440
+  },
+  pagination: {
+    defaultPage: 1,
+    defaultLimit: 10
+  }
+};
 
 const User = mongoose.model('User');
 

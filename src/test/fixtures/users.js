@@ -1,4 +1,5 @@
-import bcrypt from 'bcrypt';
+// import bcrypt from 'bcrypt';
+const bcrypt = {};
 import { createObjectId } from 'pow-mongodb-fixtures';
 
 exports.users = {

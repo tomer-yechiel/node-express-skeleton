@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate';
-import bcrypt from 'bcrypt';
-
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   email: {
@@ -33,13 +31,7 @@ UserSchema.set('toJSON', {
 
 UserSchema.pre('save', function(next) {
   if (!this.isModified('password')) return next();
-
-  bcrypt.hash(this.password, 10, function(err, hash) {
-    if (err) return next(err);
-
-    this.password = hash;
-    next();
-  });
+  next();
 });
 
 UserSchema.methods.getTokenData = function() {

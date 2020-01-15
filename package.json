@@ -4,7 +4,7 @@
   "description": "Node.js + Express skeleton application",
   "main": "index.js",
   "scripts": {
-    "start": "export NODE_ENV=dev NODE_CONFIG_DIR=./src/config/ && nodemon -w src --exec \"babel-node src/app.js --presets es2015,stage-0\"",
+    "start": "cross-env NODE_ENV=dev NODE_CONFIG_DIR=./src/config/ && nodemon -w src --exec \"babel-node src/main.js --presets es2015,stage-0\"",
     "test": "export NODE_ENV=test NODE_CONFIG_DIR=./src/config/ && mocha --timeout 10000 --compilers js:babel-core/register ./src/test/*.js ",
     "populatedb": "babel-node --presets es2015 ./node_modules/pow-mongodb-fixtures/bin/mongofixtures node-express-skeleton-dev ./src/test/fixtures"
   },
@@ -25,9 +25,9 @@
   },
   "homepage": "https://github.com/romandunets/node-express-skeleton#readme",
   "dependencies": {
-    "bcrypt": "^1.0.3",
     "body-parser": "^1.17.2",
     "config": "^1.26.2",
+    "cross-env": "^6.0.3",
     "express": "^4.15.3",
     "jsonwebtoken": "^7.4.2",
     "mongoose": "^4.11.5",

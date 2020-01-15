@@ -2,8 +2,11 @@ import mongoose from 'mongoose';
 import response from '../helpers/response';
 import request from '../helpers/request';
 import pagination from '../helpers/pagination';
+import {NEW_USER_CREATED} from '../common/messeges-types';
 
 const User = mongoose.model('User');
+
+
 
 exports.list = function(req, res) {
   if (req.currentUser.role != 'admin') return response.sendForbidden(res);
@@ -27,6 +30,7 @@ exports.create = function(req, res) {
   newUser.role = 'user';
   newUser.save(function(err, user) {
     if (err) return response.sendBadRequest(res, err);
+    process.send({name: NEW_USER_CREATED, data: {newUser}});
     response.sendCreated(res, user);
   });
 };
